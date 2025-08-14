@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Usuario {
 
     @Id
-    private Long id;
+    private String id;
 
     private String nome;
     private String email;
@@ -22,11 +22,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

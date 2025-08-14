@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Publicacao {
 
     @Id
-    private Long id;
+    private String id;
 
     private Date data;
     private String titulo;
@@ -25,11 +25,11 @@ public class Publicacao {
         this.corpo = corpo;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
