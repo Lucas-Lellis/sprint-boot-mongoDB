@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsarioService {
+public class UsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public List<Usuario> acharTodosUsuarios(String id) {
+    public List<Usuario> acharTodosUsuarios() {
         return usuarioRepository.findAll();
     }
 
