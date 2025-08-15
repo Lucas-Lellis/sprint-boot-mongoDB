@@ -1,5 +1,6 @@
 package net.codejava.sprint_boot_mongoDB.messenger.service;
 
+import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
 import net.codejava.sprint_boot_mongoDB.messenger.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -14,11 +16,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> acharTodosUsuarios() {
-        return usuarioRepository.findAll();
+    public List<UsuarioDTO> acharTodosUsuarios() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        return usuarios.stream()
+                .map(usuario -> new UsuarioDTO(usuario.getId(), usuario.getNome(),usuario.getEmail()))
+                .collect(Collectors.toList());
     }
 
-    public Optional<Usuario> acharUsuarioPorId(String id) {
-        return usuarioRepository.findById(id);
+    public Optional<UsuarioDTO> acharUsuarioPorId(String id) {
+        return usuarioRepository.findById(id)
+                .map(usuario -> new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail()));
     }
 }

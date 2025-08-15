@@ -1,6 +1,6 @@
 package net.codejava.sprint_boot_mongoDB.messenger.controller;
 
-import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
+import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,15 +21,15 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> buscarTodosUsuarios() {
-        List<Usuario> usuarios = usuarioService.acharTodosUsuarios();
-        return new ResponseEntity<>(usuarios, HttpStatus.OK);
+    public ResponseEntity<List<UsuarioDTO>> buscarTodosUsuarios() {
+        List<UsuarioDTO> usuariosDTO = usuarioService.acharTodosUsuarios();
+        return new ResponseEntity<>(usuariosDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable String id) {
-        Optional<Usuario> usuario = usuarioService.acharUsuarioPorId(id);
-        return usuario.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+    public ResponseEntity<UsuarioDTO> buscarUsuarioPorId(@PathVariable String id) {
+        Optional<UsuarioDTO> usuarioDTO = usuarioService.acharUsuarioPorId(id);
+        return usuarioDTO.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
