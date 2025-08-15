@@ -18,7 +18,7 @@ import java.util.Optional;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> buscarTodosUsuarios() {

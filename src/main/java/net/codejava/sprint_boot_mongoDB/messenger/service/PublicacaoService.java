@@ -12,7 +12,7 @@ import java.util.Optional;
 public class PublicacaoService {
 
     @Autowired
-    PublicacaoRepository publicacaoRepository;
+    private PublicacaoRepository publicacaoRepository;
 
     public Optional<Publicacao> buscarPublicacaoPorID(String id) {
         return publicacaoRepository.findById(id);

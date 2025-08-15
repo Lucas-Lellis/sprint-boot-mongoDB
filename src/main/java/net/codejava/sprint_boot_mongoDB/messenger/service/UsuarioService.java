@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UsuarioService {
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     public List<Usuario> acharTodosUsuarios() {
         return usuarioRepository.findAll();

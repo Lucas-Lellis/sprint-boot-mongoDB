@@ -17,7 +17,7 @@ import java.util.Optional;
 public class PublicacaoController {
 
     @Autowired
-    PublicacaoService publicacaoService;
+     private PublicacaoService publicacaoService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Publicacao> buscarPublicacaoPorID(@PathVariable String id) {
