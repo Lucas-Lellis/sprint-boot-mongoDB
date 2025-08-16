@@ -41,4 +41,20 @@ public class UsuarioService {
         }
         usuarioRepository.deleteById(id);
     }
+
+    public UsuarioDTO atualizarUsuario(String id, UsuarioDTO usuarioDTO) {
+        Usuario usuarioExistente = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario com o ID " + id + " não encontrado"));
+
+        if (usuarioDTO.getNome() != null) {
+            usuarioExistente.setNome(usuarioDTO.getNome());
+        }
+        if (usuarioDTO.getEmail() != null) {
+            usuarioExistente.setEmail(usuarioDTO.getEmail());
+        }
+
+        Usuario usuarioAtualizado = usuarioRepository.save(usuarioExistente);
+
+        return new UsuarioDTO(usuarioAtualizado.getId(), usuarioAtualizado.getNome(), usuarioAtualizado.getEmail());
+    }
 }
