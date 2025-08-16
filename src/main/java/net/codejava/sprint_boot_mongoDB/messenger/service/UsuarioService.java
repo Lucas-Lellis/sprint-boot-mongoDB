@@ -33,4 +33,8 @@ public class UsuarioService {
         Usuario usuarioSalvo = usuarioRepository.save(usuario);
         return new UsuarioDTO(usuarioSalvo.getId(), usuarioSalvo.getNome(), usuarioSalvo.getEmail());
     }
+
+    public void deletarUsuario(String id) {
+        usuarioRepository.deleteById(id);
+    }
 }

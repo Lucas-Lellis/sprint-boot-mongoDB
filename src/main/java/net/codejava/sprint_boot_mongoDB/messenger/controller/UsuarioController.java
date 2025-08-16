@@ -35,4 +35,10 @@ public class UsuarioController {
         UsuarioDTO usuarioInserido = usuarioService.inserirUsuario(usuarioDTO);
         return new ResponseEntity<>(usuarioInserido, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<UsuarioDTO> deletarUsuario(@PathVariable String id) {
+        usuarioService.deletarUsuario(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
