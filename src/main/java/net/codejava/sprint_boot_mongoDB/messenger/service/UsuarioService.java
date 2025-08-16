@@ -27,4 +27,10 @@ public class UsuarioService {
         return usuarioRepository.findById(id)
                 .map(usuario -> new UsuarioDTO(usuario.getId(), usuario.getNome(), usuario.getEmail()));
     }
+
+    public UsuarioDTO inserirUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = new Usuario(usuarioDTO.getNome(), usuarioDTO.getEmail());
+        Usuario usuarioSalvo = usuarioRepository.save(usuario);
+        return new UsuarioDTO(usuarioSalvo.getId(), usuarioSalvo.getNome(), usuarioSalvo.getEmail());
+    }
 }
