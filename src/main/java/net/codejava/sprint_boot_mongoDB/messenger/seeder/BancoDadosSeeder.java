@@ -1,5 +1,6 @@
 package net.codejava.sprint_boot_mongoDB.messenger.seeder;
 
+import net.codejava.sprint_boot_mongoDB.messenger.dto.AutorDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Publicacao;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
 import net.codejava.sprint_boot_mongoDB.messenger.repository.PublicacaoRepository;
@@ -37,12 +38,13 @@ public class BancoDadosSeeder implements CommandLineRunner {
         Usuario julius = new Usuario("Julius Caesar", "julius@gmail.com");
         Usuario napoleon = new Usuario("Napoleon Bonaparte", "napolean@gmail.com");
 
-        Publicacao publicacao1 = new Publicacao(format.parse("10/08/2025"), "Viagem",
-                "Vou viajar pra Russia, ats. Napolean", napoleon);
-        Publicacao publicacao2 = new Publicacao(format.parse("11/08/2025"), "Conquista",
-                "Irei conquistar a Persia, ats. Alexandre", alexandre);
-
         usuarioRepository.saveAll(Arrays.asList(alexandre, julius, napoleon));
+
+        Publicacao publicacao1 = new Publicacao(format.parse("10/08/2025"), "Viagem",
+                "Vou viajar pra Russia, ats. Napolean", new AutorDTO(napoleon));
+        Publicacao publicacao2 = new Publicacao(format.parse("11/08/2025"), "Conquista",
+                "Irei conquistar a Persia, ats. Alexandre", new AutorDTO(alexandre));
+
         publicacaoRepository.saveAll(Arrays.asList(publicacao1, publicacao2));
     }
 }

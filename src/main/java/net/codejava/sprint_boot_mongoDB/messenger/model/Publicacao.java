@@ -1,5 +1,6 @@
 package net.codejava.sprint_boot_mongoDB.messenger.model;
 
+import net.codejava.sprint_boot_mongoDB.messenger.dto.AutorDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,12 +16,12 @@ public class Publicacao {
     private Date data;
     private String titulo;
     private String corpo;
-    private Usuario autor;
+    private AutorDTO autor;
 
     public Publicacao() {
     }
 
-    public Publicacao(Date data, String titulo, String corpo, Usuario autor) {
+    public Publicacao(Date data, String titulo, String corpo, AutorDTO autor) {
         this.data = data;
         this.titulo = titulo;
         this.corpo = corpo;
@@ -59,11 +60,11 @@ public class Publicacao {
         this.corpo = corpo;
     }
 
-    public Usuario getAutor() {
+    public AutorDTO getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(AutorDTO autor) {
         this.autor = autor;
     }
 

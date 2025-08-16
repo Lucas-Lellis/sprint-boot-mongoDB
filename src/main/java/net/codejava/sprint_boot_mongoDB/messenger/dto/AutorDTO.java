@@ -1,20 +1,23 @@
 package net.codejava.sprint_boot_mongoDB.messenger.dto;
 
+import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
+import org.springframework.data.annotation.Id;
+
 import java.io.Serializable;
 
-public class UsuarioDTO implements Serializable {
+public class AutorDTO implements Serializable {
 
+    @Id
     private String id;
-    private String nome;
-    private String email;
 
-    public UsuarioDTO() {
+    private String nome;
+
+    public AutorDTO() {
     }
 
-    public UsuarioDTO(String id, String nome, String email) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
+    public AutorDTO(Usuario usuario) {
+        this.id = usuario.getId();
+        this.nome = usuario.getNome();
     }
 
     public String getId() {
@@ -31,14 +34,6 @@ public class UsuarioDTO implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }
