@@ -15,14 +15,16 @@ public class Publicacao {
     private Date data;
     private String titulo;
     private String corpo;
+    private Usuario autor;
 
     public Publicacao() {
     }
 
-    public Publicacao(Date data, String titulo, String corpo) {
+    public Publicacao(Date data, String titulo, String corpo, Usuario autor) {
         this.data = data;
         this.titulo = titulo;
         this.corpo = corpo;
+        this.autor = autor;
     }
 
     public String getId() {
@@ -55,6 +57,14 @@ public class Publicacao {
 
     public void setCorpo(String corpo) {
         this.corpo = corpo;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
     }
 
     @Override
