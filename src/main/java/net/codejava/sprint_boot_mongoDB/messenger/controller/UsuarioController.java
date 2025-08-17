@@ -1,6 +1,9 @@
 package net.codejava.sprint_boot_mongoDB.messenger.controller;
 
 import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
+import net.codejava.sprint_boot_mongoDB.messenger.model.Publicacao;
+import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
+import net.codejava.sprint_boot_mongoDB.messenger.service.PublicacaoService;
 import net.codejava.sprint_boot_mongoDB.messenger.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private PublicacaoService publicacaoService;
 
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> buscarTodosUsuarios() {
@@ -46,5 +52,11 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> atualizarUsuario(@PathVariable String id, @RequestBody UsuarioDTO usuarioDTO) {
         UsuarioDTO usuarioAtualizado = usuarioService.atualizarUsuario(id, usuarioDTO);
         return new ResponseEntity<>(usuarioAtualizado, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/publicacoes")
+    public ResponseEntity<List<Publicacao>> buscarPublicacoesPorUsuarioId(@PathVariable String id) {
+        List<Publicacao> publicacoes = usuarioService.acharPublicacoesPorUsuarioId(id);
+        return new ResponseEntity<>(publicacoes, HttpStatus.OK);
     }
 }

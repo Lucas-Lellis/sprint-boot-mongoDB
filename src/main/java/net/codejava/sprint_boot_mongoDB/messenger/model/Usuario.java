@@ -1,8 +1,11 @@
 package net.codejava.sprint_boot_mongoDB.messenger.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "usuarios")
@@ -13,6 +16,9 @@ public class Usuario {
 
     private String nome;
     private String email;
+
+    @DBRef(lazy = true)
+    private List<Publicacao> publicacaos = new ArrayList<>();
 
     public Usuario() {
     }
@@ -44,6 +50,14 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Publicacao> getPublicacaos() {
+        return publicacaos;
+    }
+
+    public void setPublicacaos(List<Publicacao> publicacaos) {
+        this.publicacaos = publicacaos;
     }
 
     @Override

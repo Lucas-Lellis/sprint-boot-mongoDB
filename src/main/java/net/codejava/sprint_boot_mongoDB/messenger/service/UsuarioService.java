@@ -2,6 +2,7 @@ package net.codejava.sprint_boot_mongoDB.messenger.service;
 
 import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.exceptions.ResourceNotFoundException;
+import net.codejava.sprint_boot_mongoDB.messenger.model.Publicacao;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
 import net.codejava.sprint_boot_mongoDB.messenger.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,12 @@ public class UsuarioService {
         Usuario usuarioAtualizado = usuarioRepository.save(usuarioExistente);
 
         return new UsuarioDTO(usuarioAtualizado.getId(), usuarioAtualizado.getNome(), usuarioAtualizado.getEmail());
+    }
+
+    public List<Publicacao> acharPublicacoesPorUsuarioId(String id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario com o ID " + id + " não encontrado"));
+
+        return usuario.getPublicacaos();
     }
 }

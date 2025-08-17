@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.TimeZone;
 
 @Component
@@ -42,9 +41,17 @@ public class BancoDadosSeeder implements CommandLineRunner {
 
         Publicacao publicacao1 = new Publicacao(format.parse("10/08/2025"), "Viagem",
                 "Vou viajar pra Russia, ats. Napolean", new AutorDTO(napoleon));
+
         Publicacao publicacao2 = new Publicacao(format.parse("11/08/2025"), "Conquista",
                 "Irei conquistar a Persia, ats. Alexandre", new AutorDTO(alexandre));
+        Publicacao publicacao3 = new Publicacao(format.parse("12/08/2025"), "Pensativo",
+                "Não ha mais nada que possa ser feito...", new AutorDTO(napoleon));
 
-        publicacaoRepository.saveAll(Arrays.asList(publicacao1, publicacao2));
+        publicacaoRepository.saveAll(Arrays.asList(publicacao1, publicacao2, publicacao3));
+
+        napoleon.getPublicacaos().addAll(Arrays.asList(publicacao1, publicacao3));
+        alexandre.getPublicacaos().addAll(Arrays.asList(publicacao2));
+
+        usuarioRepository.saveAll(Arrays.asList(napoleon, alexandre));
     }
 }
