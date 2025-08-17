@@ -1,15 +1,12 @@
 package net.codejava.sprint_boot_mongoDB.messenger.dto;
 
 import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
 public class AutorDTO implements Serializable {
 
-    @Id
     private String id;
-
     private String nome;
 
     public AutorDTO() {

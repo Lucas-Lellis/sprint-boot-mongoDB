@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.Objects;
 
-@Document(collation = "publicacoes")
+@Document(collection = "publicacoes")
 public class Publicacao {
 
     @Id

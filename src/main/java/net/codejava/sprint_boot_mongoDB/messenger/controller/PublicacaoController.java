@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,8 +22,8 @@ public class PublicacaoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Publicacao> buscarPublicacaoPorID(@PathVariable String id) {
-        Optional<Publicacao> publicacao = publicacaoService.buscarPublicacaoPorID(id);
-        return publicacao.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+        Optional<Publicacao> publicacoes = publicacaoService.buscarPublicacaoPorID(id);
+        return publicacoes.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                         .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

@@ -4,6 +4,7 @@ import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.exceptions.ResourceNotFoundException;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Publicacao;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
+import net.codejava.sprint_boot_mongoDB.messenger.repository.PublicacaoRepository;
 import net.codejava.sprint_boot_mongoDB.messenger.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PublicacaoRepository publicacaoRepository;
 
     public List<UsuarioDTO> acharTodosUsuarios() {
         List<Usuario> usuarios = usuarioRepository.findAll();
@@ -60,9 +64,9 @@ public class UsuarioService {
     }
 
     public List<Publicacao> acharPublicacoesPorUsuarioId(String id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario com o ID " + id + " não encontrado"));
-
-        return usuario.getPublicacaos();
+        if (!usuarioRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Usuario com o ID " + id + " não encontrado");
+        }
+        return publicacaoRepository.findByAutorId(id);
     }
 }
