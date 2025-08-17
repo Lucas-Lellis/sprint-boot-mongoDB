@@ -1,10 +1,13 @@
 package net.codejava.sprint_boot_mongoDB.messenger.model;
 
 import net.codejava.sprint_boot_mongoDB.messenger.dto.AutorDTO;
+import net.codejava.sprint_boot_mongoDB.messenger.dto.ComentarioDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "publicacoes")
@@ -17,6 +20,8 @@ public class Publicacao {
     private String titulo;
     private String corpo;
     private AutorDTO autor;
+
+     private List<ComentarioDTO> comentarios = new ArrayList<>();
 
     public Publicacao() {
     }
@@ -66,6 +71,14 @@ public class Publicacao {
 
     public void setAutor(AutorDTO autor) {
         this.autor = autor;
+    }
+
+    public List<ComentarioDTO> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioDTO> comentarios) {
+        this.comentarios = comentarios;
     }
 
     @Override

@@ -2,7 +2,6 @@ package net.codejava.sprint_boot_mongoDB.messenger.controller;
 
 import net.codejava.sprint_boot_mongoDB.messenger.dto.UsuarioDTO;
 import net.codejava.sprint_boot_mongoDB.messenger.model.Publicacao;
-import net.codejava.sprint_boot_mongoDB.messenger.model.Usuario;
 import net.codejava.sprint_boot_mongoDB.messenger.service.PublicacaoService;
 import net.codejava.sprint_boot_mongoDB.messenger.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
