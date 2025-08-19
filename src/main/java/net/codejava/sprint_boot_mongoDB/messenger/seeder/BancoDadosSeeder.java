@@ -58,7 +58,7 @@ public class BancoDadosSeeder implements CommandLineRunner {
         publicacao3.getComentarios().add(comentario4);
 
         publicacaoRepository.saveAll(Arrays.asList(publicacao1, publicacao2, publicacao3));
-        
+
         napoleon.getPublicacaos().addAll(Arrays.asList(publicacao1, publicacao3));
         alexandre.getPublicacaos().addAll(Arrays.asList(publicacao2));
 

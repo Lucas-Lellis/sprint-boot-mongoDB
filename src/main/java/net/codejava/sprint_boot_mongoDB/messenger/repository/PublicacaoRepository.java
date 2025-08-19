@@ -7,4 +7,6 @@ import java.util.List;
 public interface PublicacaoRepository extends MongoRepository<Publicacao, String> {
 
     List<Publicacao> findByAutorId(String autorId);
+    List<Publicacao> findByTituloContainingIgnoreCase(String titulo);
+
 }

@@ -5,6 +5,7 @@ import net.codejava.sprint_boot_mongoDB.messenger.repository.PublicacaoRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,5 +16,9 @@ public class PublicacaoService {
 
     public Optional<Publicacao> buscarPublicacaoPorID(String id) {
         return publicacaoRepository.findById(id);
+    }
+
+    public List<Publicacao> buscarPorTitulo(String titulo) {
+        return publicacaoRepository.findByTituloContainingIgnoreCase(titulo);
     }
 }
